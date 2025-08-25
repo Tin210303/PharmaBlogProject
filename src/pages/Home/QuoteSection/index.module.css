@@ -1,0 +1,277 @@
+/* QuoteSection.module.css */
+.quoteSection {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 80px 0 0 0;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    align-items: center;
+    min-height: 70vh;
+}
+
+/* Quote Content - Left Side */
+.quoteContent {
+    padding: 60px 80px 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.quoteSection.visible .quoteContent {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.quoteWrapper {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.openQuote {
+    font-size: 8rem;
+    font-family: 'Georgia', serif;
+    color: #e0e0e0;
+    line-height: 0.8;
+    position: absolute;
+    top: -40px;
+    left: -20px;
+    z-index: 1;
+}
+
+.closeQuote {
+    font-size: 8rem;
+    font-family: 'Georgia', serif;
+    color: #e0e0e0;
+    line-height: 0.8;
+    position: absolute;
+    bottom: -60px;
+    right: -20px;
+    z-index: 1;
+}
+
+.quoteText {
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: #333333;
+    line-height: 1.4;
+    margin: 0;
+    padding: 40px 20px 20px 20px;
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    position: relative;
+    z-index: 2;
+    letter-spacing: -0.5px;
+}
+
+.attribution {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    padding-left: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition-delay: 0.3s;
+}
+
+.quoteSection.visible .attribution {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.author {
+    font-size: 1.1rem;
+    color: #888888;
+    font-family: 'Georgia', serif;
+    font-style: italic;
+}
+
+.source {
+    font-size: 1.1rem;
+    color: #888888;
+    font-family: 'Georgia', serif;
+    font-style: italic;
+}
+
+/* Image Section - Right Side */
+.imageSection {
+    height: 100%;
+    min-height: 600px;
+    position: relative;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition-delay: 0.2s;
+}
+
+.quoteSection.visible .imageSection {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.imageWrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.quoteImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.quoteSection:hover .quoteImage {
+    transform: scale(1.02);
+}
+
+.imageOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+    135deg, 
+    rgba(0, 0, 0, 0.2) 0%, 
+    rgba(0, 0, 0, 0.1) 50%, 
+    rgba(0, 0, 0, 0.3) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.quoteSection:hover .imageOverlay {
+    opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .quoteContent {
+    padding: 40px 60px 40px 20px;
+    }
+    
+    .quoteText {
+    font-size: 2rem;
+    }
+    
+    .openQuote,
+    .closeQuote {
+    font-size: 6rem;
+    }
+    
+    .openQuote {
+    top: -30px;
+    left: -15px;
+    }
+    
+    .closeQuote {
+    bottom: -45px;
+    right: -15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .quoteSection {
+    padding: 60px 0;
+    }
+    
+    .container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    min-height: auto;
+    }
+    
+    .quoteContent {
+    padding: 40px 20px;
+    text-align: center;
+    order: 2;
+    }
+    
+    .imageSection {
+    min-height: 400px;
+    order: 1;
+    }
+    
+    .quoteText {
+    font-size: 1.8rem;
+    padding: 30px 10px 15px 10px;
+    }
+    
+    .openQuote,
+    .closeQuote {
+    font-size: 5rem;
+    }
+    
+    .openQuote {
+    top: -25px;
+    left: -10px;
+    }
+    
+    .closeQuote {
+    bottom: -35px;
+    right: -10px;
+    }
+    
+    .attribution {
+    justify-content: center;
+    padding-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+    padding: 0 15px;
+    }
+    
+    .quoteSection {
+    padding: 40px 0;
+    }
+    
+    .quoteContent {
+    padding: 30px 15px;
+    }
+    
+    .quoteText {
+    font-size: 1.5rem;
+    padding: 25px 5px 10px 5px;
+    }
+    
+    .openQuote,
+    .closeQuote {
+    font-size: 4rem;
+    }
+    
+    .openQuote {
+    top: -20px;
+    left: -5px;
+    }
+    
+    .closeQuote {
+    bottom: -30px;
+    right: -5px;
+    }
+    
+    .imageSection {
+    min-height: 350px;
+    }
+    
+    .author,
+    .source {
+    font-size: 1rem;
+    }
+}

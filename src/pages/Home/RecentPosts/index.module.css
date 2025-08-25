@@ -1,0 +1,292 @@
+/* RecentPosts.module.css */
+.recentPosts {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 80px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+/* Title Animation */
+.title {
+    font-size: 3rem;
+    font-weight: 300;
+    color: #333333;
+    margin: 0;
+    font-family: 'Georgia', serif;
+    letter-spacing: -1px;
+    
+    /* Animation styles */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+    opacity: 0;
+    transform: translateY(20px);
+    }
+    to {
+    opacity: 1;
+    transform: translateY(0);
+    }
+}
+
+/* Staggered animation for better visual effect */
+.postItem:nth-child(1).visible {
+    animation-delay: 0ms;
+}
+
+.postItem:nth-child(2).visible {
+    animation-delay: 150ms;
+}
+
+.postItem:nth-child(3).visible {
+    animation-delay: 300ms;
+}
+
+.postItem:nth-child(4).visible {
+    animation-delay: 450ms;
+}
+
+.postItem:nth-child(5).visible {
+    animation-delay: 600ms;
+}
+
+.postsList {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.postItem {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #e5e5e5;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    
+    /* Animation styles */
+    opacity: 0;
+    transform: translateX(-30px);
+    animation-duration: 0.8s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-fill-mode: forwards;
+}
+
+.postItem.visible {
+    animation-name: slideInFromLeft;
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+.postItem:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.postImage {
+    flex-shrink: 0;
+    width: 300px;
+    height: 200px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.postImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.postItem:hover .postImg {
+    transform: scale(1.05);
+}
+
+.postContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 10px 0;
+}
+
+.postMeta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: #888888;
+    font-family: 'Arial', sans-serif;
+}
+
+.postDate,
+.readTime {
+    color: #888888;
+}
+
+.separator {
+    color: #cccccc;
+}
+
+.postTitle {
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: #333333;
+    margin: 0;
+    font-family: 'Georgia', serif;
+    line-height: 1.3;
+    transition: color 0.3s ease;
+}
+
+.postItem:hover .postTitle {
+    color: #d2691e;
+}
+
+.postSubtitle {
+    font-size: 1rem;
+    color: #666666;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    font-weight: 300;
+    margin-top: 8px;
+}
+
+.postFooter {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.comments {
+    font-size: 0.9rem;
+    color: #999999;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .postImage {
+        width: 250px;
+        height: 170px;
+    }
+    
+    .postItem {
+        gap: 30px;
+    }
+    
+    .title {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .recentPosts {
+        padding: 60px 0;
+    }
+    
+    .title {
+        font-size: 2.2rem;
+    }
+    
+    .header {
+        margin-bottom: 40px;
+    }
+    
+    .postsList {
+        gap: 40px;
+    }
+    
+    .postItem {
+        flex-direction: column;
+        gap: 20px;
+        align-items: stretch;
+        /* Mobile animation from bottom */
+        transform: translateY(30px);
+    }
+    
+    @keyframes slideInFromLeft {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .postImage {
+        width: 100%;
+        height: 250px;
+    }
+    
+    .postTitle {
+        font-size: 1.5rem;
+    }
+    
+    .postContent {
+        padding: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .recentPosts {
+        padding: 40px 0;
+    }
+    
+    .title {
+        font-size: 2rem;
+    }
+    
+    .postImage {
+        height: 200px;
+    }
+    
+    .postTitle {
+        font-size: 1.3rem;
+    }
+    
+    .postSubtitle {
+        font-size: 0.9rem;
+    }
+    
+    .postsList {
+        gap: 30px;
+    }
+    
+    .postItem {
+        padding-bottom: 30px;
+    }
+}
