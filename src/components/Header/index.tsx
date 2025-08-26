@@ -22,7 +22,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
           <ul className={styles.navList}>
             <li className={styles.navItem}>
               <NavLink
-                to="/home"
+                to="/"
                 className={({ isActive }) =>
                   `${styles.navLink} ${isActive ? styles.active : ''}`
                 }

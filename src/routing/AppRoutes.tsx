@@ -15,7 +15,7 @@ const AppRoutes: FC = () => {
             <Routes>
                 <Route element={<App />}>
                     <Route element={<MasterLayout />}>
-                        <Route path="home" element={<Home />} />
+                        <Route path="/" element={<Home />} />
                         <Route path="blog" element={<Blog />} />
                         <Route path="about" element={<About />} />
                         <Route path="posts/:slug" element={<BlogDetail />} />
