@@ -1,9 +1,10 @@
 // BlogSection.tsx
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './index.module.css';
 import RecentPosts from './RecentPosts';
 import QuoteSection from './QuoteSection';
 import AboutSection from './AboutSection';
+import { useNavigate } from 'react-router-dom';
 
 interface BlogPost {
   id: string;
@@ -30,6 +31,13 @@ const Home: React.FC<BlogSectionProps> = ({
     }
   ]
 }) => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    fetch("https://public-api.wordpress.com/wp/v2/sites/clinpharmanews.wordpress.com/posts")
+      .then(res => res.json())
+      .then(data => console.log(data));
+}, []);
+  
   return (
     <section className={`${styles.blogSection} ${className || ''}`}>
       <div className={styles.container}>
@@ -67,7 +75,12 @@ const Home: React.FC<BlogSectionProps> = ({
                 </div>
 
                 <div className={styles.btnContainer}>
-                  <button className={styles.seeAllBtn}>All Posts</button>
+                  <button 
+                    className={styles.seeAllBtn}
+                    onClick={() => navigate('/blog')}
+                  >
+                    All Posts
+                  </button>
                 </div>
                
               </article>
@@ -77,7 +90,7 @@ const Home: React.FC<BlogSectionProps> = ({
       </div>
       <RecentPosts />
       <QuoteSection />
-      <AboutSection />
+      <AboutSection onButtonClick={() => navigate('/about')}/>
     </section>
   );
 };

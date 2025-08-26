@@ -1,0 +1,109 @@
+/* About.module.css */
+.aboutSection {
+    padding: 0 6rem 3rem;
+}
+
+.container {
+    margin: 0 auto;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+@media (max-width: 1024px) {
+    .grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    }
+}
+
+/* Image Column */
+.imageColumn {
+    order: 2;
+}
+
+@media (max-width: 1024px) {
+    .imageColumn {
+    order: 1;
+    }
+}
+
+.imageContainer {
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    background-color: #fdf2f8;
+}
+
+.profileImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Content Column */
+.contentColumn {
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+    .contentColumn {
+    order: 2;
+    }
+}
+
+.mainTitle {
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: #1f2937;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+    .mainTitle {
+    font-size: 2.5rem;
+    }
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    color: #6b7280;
+    font-weight: 300;
+    margin-bottom: 2rem;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    color: #374151;
+    line-height: 1.7;
+}
+
+.paragraph {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+    .aboutSection {
+    padding: 2rem 1rem;
+    }
+    
+    .grid {
+    gap: 1.5rem;
+    }
+    
+    .content {
+    gap: 1rem;
+    }
+}

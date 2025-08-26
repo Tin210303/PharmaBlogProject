@@ -1,0 +1,206 @@
+/* Footer.module.css */
+.footer {
+    background-color: rgb(65, 65, 65);
+    color: white;
+    padding: 4rem 2rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+@media (max-width: 768px) {
+    .container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    }
+}
+
+/* Company Info Section */
+.companyInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    margin: 0;
+}
+
+.contactInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: #d1d5db;
+}
+
+.contactInfo p {
+    margin: 0;
+}
+
+.socialLinks {
+    display: flex;
+    gap: 1rem;
+    padding-top: 1rem;
+}
+
+.socialLink {
+    color: #d1d5db;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+}
+
+.socialLink:hover {
+    color: white;
+}
+
+.copyright {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    padding-top: 2rem;
+}
+
+.copyright p {
+    margin: 0;
+}
+
+.wixLink {
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+}
+
+.wixLink:hover {
+    color: #d1d5db;
+}
+
+/* Contact Form Section */
+.contactSection {
+    display: flex;
+    flex-direction: column;
+}
+
+.contactTitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin: 0 0 0.5rem 0;
+}
+
+.contactSubtitle {
+    color: #d1d5db;
+    margin: 0 0 2rem 0;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.formRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .formRow {
+    grid-template-columns: 1fr;
+    }
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    display: block;
+    font-size: 0.875rem;
+    color: #d1d5db;
+    margin-bottom: 0.5rem;
+}
+
+.input {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 0.5rem;
+    color: white;
+    outline: none;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.input:focus {
+    border-bottom-color: var(--default-color);
+}
+
+.input.error {
+    border-bottom-color: var(--default-color);
+}
+
+.textarea {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 0.5rem;
+    color: white;
+    outline: none;
+    resize: none;
+    transition: border-color 0.2s ease-in-out;
+    min-height: 100px;
+}
+
+.textarea:focus {
+    border-bottom-color: var(--default-color);
+}
+
+.textarea.error {
+    border-bottom-color: var(--default-color);
+}
+
+.textarea::placeholder {
+    color: #9ca3af;
+}
+
+.errorMessage {
+    color: #f87171;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.submitContainer {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 1rem;
+}
+
+.submitButton {
+    padding: 0.5rem 2rem;
+    border: 1px solid #fff;
+    border-radius: 0;
+    background-color: transparent;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.submitButton:hover:not(:disabled) {
+    background-color: white;
+    color: #1f2937;
+}
+
+.submitButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

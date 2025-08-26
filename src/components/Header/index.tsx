@@ -1,6 +1,7 @@
 // Header.tsx
 import React from 'react';
 import styles from './index.module.css';
+import { NavLink } from 'react-router-dom';
 
 interface HeaderProps {
   className?: string;
@@ -20,16 +21,44 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
         <nav className={styles.navigation}>
           <ul className={styles.navList}>
             <li className={styles.navItem}>
-              <a href="/home" className={styles.navLink}>Home</a>
+              <NavLink
+                to="/home"
+                className={({ isActive }) =>
+                  `${styles.navLink} ${isActive ? styles.active : ''}`
+                }
+              >
+                Home
+              </NavLink>
             </li>
             <li className={styles.navItem}>
-              <a href="/blog" className={styles.navLink}>Blog</a>
+              <NavLink
+                to="/blog"
+                className={({ isActive }) =>
+                  `${styles.navLink} ${isActive ? styles.active : ''}`
+                }
+              >
+                Blog
+              </NavLink>
             </li>
             <li className={styles.navItem}>
-              <a href="/about" className={styles.navLink}>About</a>
+              <NavLink
+                to="/about"
+                className={({ isActive }) =>
+                  `${styles.navLink} ${isActive ? styles.active : ''}`
+                }
+              >
+                About
+              </NavLink>
             </li>
             <li className={styles.navItem}>
-              <a href="/contact" className={styles.navLink}>Contact</a>
+              <NavLink
+                to="/contact"
+                className={({ isActive }) =>
+                  `${styles.navLink} ${isActive ? styles.active : ''}`
+                }
+              >
+                Contact
+              </NavLink>
             </li>
           </ul>
         </nav>
