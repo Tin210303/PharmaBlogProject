@@ -72,7 +72,7 @@ class BlogService {
         content: wpPost.content?.rendered || '',
         excerpt: wpPost.excerpt?.rendered || '',
         image: wpPost.jetpack_featured_media_url || 
-               'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800&h=600&fit=crop',
+               'https://png.pngtree.com/thumb_back/fh260/background/20240403/pngtree-assorted-pharmaceutical-medicine-pills-tablets-and-capsules-over-blue-background-image_15647957.jpg',
         author: authorName,
         date: this.formatDate(wpPost.date),
         readTime: this.calculateReadTime(wpPost.content?.rendered || ''),

@@ -56,7 +56,7 @@ const RecentPosts: React.FC<RecentPostsProps> = ({ className }) => {
       postRefs.current.delete(postId);
     }
   };
-
+  
   const navigate = useNavigate();
 
   return (
