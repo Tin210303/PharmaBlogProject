@@ -4,7 +4,6 @@ import type { BlogApiParams, BlogApiResponse, BlogPost, WordPressPost } from "..
 class BlogService {
     private baseUrl = 'https://public-api.wordpress.com/wp/v2/sites/clinpharmanews.wordpress.com';
     private authorsCache = new Map<number, string>();
-    private categoriesCache = new Map<number, string>();
     private isApiAvailable = true;
   
     // Tính toán thời gian đọc dựa trên số từ
