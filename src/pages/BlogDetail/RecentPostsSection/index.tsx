@@ -37,36 +37,36 @@ export const RecentPostsSection = () => {
 
     return (
         <section className={styles.recentPostsSection}>
-        <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>Recent Posts</h2>
-          <button className={styles.seeAllButton}>See All</button>
-        </div>
+            <div className={styles.sectionHeader}>
+                <h2 className={styles.sectionTitle}>Recent Posts</h2>
+                <button className={styles.seeAllButton}>See All</button>
+            </div>
 
-        <div className={styles.recentPostsGrid}>
-          {recentPosts.map((recentPost) => (
-            <article key={recentPost.id} className={styles.recentPostCard}>
-              <div className={styles.recentPostImage}>
-                <img 
-                  src={recentPost.image} 
-                  alt={recentPost.title}
-                />
-              </div>
-              <div className={styles.recentPostContent}>
-                <h3 className={styles.recentPostTitle}>{recentPost.title}</h3>
-                <div className={styles.recentPostStats}>
-                  <span className={styles.recentPostViews}>
-                    <Eye size={14} />
-                    {recentPost.views}
-                  </span>
-                  <span className={styles.recentPostLikes}>
-                    <Heart size={14} />
-                    {recentPost.likes}
-                  </span>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
+            <div className={styles.recentPostsGrid}>
+                {recentPosts.map((recentPost) => (
+                    <article key={recentPost.id} className={styles.recentPostCard}>
+                        <div className={styles.recentPostImage}>
+                            <img 
+                                src={recentPost.image} 
+                                alt={recentPost.title}
+                            />
+                        </div>
+                        <div className={styles.recentPostContent}>
+                            <h3 className={styles.recentPostTitle}>{recentPost.title}</h3>
+                            <div className={styles.recentPostStats}>
+                                <span className={styles.recentPostViews}>
+                                    <Eye size={14} />
+                                    {recentPost.views}
+                                </span>
+                                <span className={styles.recentPostLikes}>
+                                    <Heart size={14} />
+                                    {recentPost.likes}
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+                ))}
+            </div>
+        </section>
     )
 }
