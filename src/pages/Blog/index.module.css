@@ -1,8 +1,7 @@
 /* Blog.module.css */
 .blogContainer {
-    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 10rem;
+    padding: 0 1rem;
 }
 
 .header {
@@ -227,4 +226,151 @@
 
 .loadMoreButton:hover {
     background-color: #f9fafb;
+}
+
+/* Responsive padding cho container */
+@media (min-width: 640px) {
+    .blogContainer {
+        padding: 0 2rem;
+    }
+    .title {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+    }
+    .filterTabs {
+        gap: 0.375rem;
+    }
+    .filterTab {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
+    .blogGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.75rem;
+    }
+    .imageContainer {
+        aspect-ratio: 16/9; /* Tỷ lệ rộng hơn cho mobile */
+    }
+    .cardContent {
+        padding: 1.25rem;
+    }
+    .authorSection {
+        margin-bottom: 1rem;
+    }
+    .authorInfo {
+        gap: 0.75rem;
+    }
+    .authorAvatar {
+        width: 2rem;
+        height: 2rem;
+    }
+    .authorDetails {
+        font-size: 0.875rem;
+        gap: 4px;
+    }
+    .moreButton {
+        padding: 0.5rem;
+    }
+    .cardTitle {
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+        line-height: 1.4;
+    }
+    .cardSubtitle {
+        font-size: 0.875rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.5;
+        -webkit-line-clamp: 3;
+    }
+    .cardStats {
+        padding-top: 1rem;
+    }
+    .views {
+        font-size: 0.875rem;
+    }
+    .likeButton {
+        font-size: 0.875rem;
+    }
+    .loadMoreButton {
+        padding: 0.75rem 2rem;
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .blogContainer {
+        padding: 0 4rem;
+    }
+    .header {
+        margin-bottom: 3rem;
+    }
+    .title {
+        font-size: 3rem;
+    }
+    .cardContent {
+        padding: 1.5rem;
+    }
+    .loadMoreContainer {
+        margin-top: 3rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .blogContainer {
+        padding: 0 6rem;
+    }
+    .title {
+        font-size: 3.5rem;
+    }
+    .blogGrid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+}
+
+@media (min-width: 1280px) {
+    .blogContainer {
+        padding: 0 8rem;
+    }
+    .blogGrid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+}
+
+@media (min-width: 1440px) {
+    .blogContainer {
+        padding: 0 10rem;
+    }
+}
+
+/* Responsive cho landscape orientation trên mobile */
+@media (max-width: 767px) and (orientation: landscape) {
+    .title {
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+    }
+    
+    .header {
+        margin-bottom: 1.5rem;
+    }
+    
+    .blogGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .cardContent {
+        padding: 0.75rem;
+    }
+    
+    .cardTitle {
+        font-size: 1rem;
+        -webkit-line-clamp: 1;
+    }
+    
+    .cardSubtitle {
+        -webkit-line-clamp: 2;
+        margin-bottom: 0.75rem;
+    }
 }
