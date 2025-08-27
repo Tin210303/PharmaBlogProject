@@ -24,8 +24,8 @@ const Home: React.FC<BlogSectionProps> = ({
   posts = [
     {
       id: '1',
-      title: 'Detoxing my social media feed',
-      subtitle: 'Create a blog post subtitle that summarizes your post in a few short, punchy sentences and entices your audience to continue reading....',
+      title: 'Detox your body from the inside out',
+      subtitle: 'Discover how pharmacy-based solutions can support liver function, flush out toxins, and restore your energy safely and effectively. Small changes can make a big difference to your health.',
       image: 'https://static.wixstatic.com/media/f5af78_81b23a68d5ac4cb699ddd6f7fbd93035~mv2_d_3000_2246_s_2.jpg/v1/fill/w_440,h_440,fp_0.50_0.50,q_90,enc_avif,quality_auto/f5af78_81b23a68d5ac4cb699ddd6f7fbd93035~mv2_d_3000_2246_s_2.webp',
       imageAlt: 'Cherry blossoms against blue sky'
     }
