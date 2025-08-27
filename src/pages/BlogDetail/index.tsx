@@ -3,10 +3,10 @@ import { User, MoreHorizontal, Heart, Facebook, Twitter, Linkedin, Share } from 
 import { useParams } from 'react-router-dom';
 import { blogService } from '../../service/blogService';
 import { ImageZoomModal } from './ImageZoomModal';
-import type { BlogPost } from '../../types/blog';
-import styles from './index.module.css';
 import { CommentsSection } from './CommentSection';
 import { RecentPostsSection } from './RecentPostsSection';
+import type { BlogPost } from '../../types/blog';
+import styles from './index.module.css';
 
 const BlogDetail: React.FC = () => {
   const [post, setPost] = useState<BlogPost | null>(null);
