@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { User, MoreHorizontal, Heart, Eye, Facebook, Twitter, Linkedin, Share } from 'lucide-react';
+import React, { useEffect, useState, useRef } from 'react';
+import { User, MoreHorizontal, Heart, Eye, Facebook, Twitter, Linkedin, Share, X, ZoomIn } from 'lucide-react';
 import styles from './index.module.css';
 import { useParams } from 'react-router-dom';
 import { blogService } from '../../service/blogService';
@@ -34,19 +34,61 @@ interface Comment {
   avatar?: string;
 }
 
+// Image Zoom Modal Component
+const ImageZoomModal: React.FC<{
+  src: string;
+  alt: string;
+  isOpen: boolean;
+  onClose: () => void;
+}> = ({ src, alt, isOpen, onClose }) => {
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen, onClose]);
+
+  if (!isOpen) return null;
+
+  return (
+    <div 
+      className={styles.imageZoomModal} 
+      onClick={onClose}
+      role="dialog"
+      aria-label="Zoomed image"
+    >
+      <div className={styles.modalOverlay} />
+      <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+        <img 
+          src={src} 
+          alt={alt} 
+          className={styles.zoomedImage}
+        />
+      </div>
+    </div>
+  );
+};
+
 const BlogDetail: React.FC = () => {
   const [post, setPost] = useState<BlogPost | null>(null);
-
   const [loading, setLoading] = useState(true);
-
   const [error, setError] = useState<string | null>(null);
-
   const { slug } = useParams<{ slug: string }>();
-
   const [comments] = useState<Comment[]>([]);
-
   const [commentText, setCommentText] = useState('');
-
   const [recentPosts] = useState<RecentPost[]>([
     {
       id: 2,
@@ -72,8 +114,16 @@ const BlogDetail: React.FC = () => {
   ]);
 
   const [isLiked, setIsLiked] = useState(false);
-
   const [likesCount, setLikesCount] = useState(0);
+  
+  // Image zoom states
+  const [zoomModal, setZoomModal] = useState({
+    isOpen: false,
+    src: '',
+    alt: ''
+  });
+  
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!slug) return;
@@ -88,6 +138,35 @@ const BlogDetail: React.FC = () => {
       .catch((err) => setError(err instanceof Error ? err.message : "Failed to fetch post"))
       .finally(() => setLoading(false));
   }, [slug]);
+
+  // Add click listeners to images in post content
+  useEffect(() => {
+    if (!contentRef.current) return;
+
+    const handleImageClick = (e: Event) => {
+      const target = e.target as HTMLElement;
+      
+      if (target.tagName === 'IMG') {
+        const img = target as HTMLImageElement;
+        setZoomModal({
+          isOpen: true,
+          src: img.src,
+          alt: img.alt || 'Image'
+        });
+      }
+    };
+
+    const contentElement = contentRef.current;
+    contentElement.addEventListener('click', handleImageClick);
+
+    return () => {
+      contentElement.removeEventListener('click', handleImageClick);
+    };
+  }, [post?.content]);
+
+  const closeZoomModal = () => {
+    setZoomModal({ isOpen: false, src: '', alt: '' });
+  };
 
   if (loading) return <p>Loading post...</p>;
   if (error) return <p className="text-red-500">{error}</p>;
@@ -159,11 +238,17 @@ const BlogDetail: React.FC = () => {
             src={post.image} 
             alt={post.title}
             className={styles.featuredImage}
+            onClick={() => setZoomModal({
+              isOpen: true,
+              src: post.image,
+              alt: post.title
+            })}
+            style={{ cursor: 'zoom-in' }}
           />
         </div>
 
         {/* Content */}
-        <div className={styles.postContent}>
+        <div className={styles.postContent} ref={contentRef}>
           <div dangerouslySetInnerHTML={{ __html: post.content }} />
         </div>
 
@@ -323,6 +408,14 @@ const BlogDetail: React.FC = () => {
           </div>
         )}
       </section>
+
+      {/* Image Zoom Modal */}
+      <ImageZoomModal
+        src={zoomModal.src}
+        alt={zoomModal.alt}
+        isOpen={zoomModal.isOpen}
+        onClose={closeZoomModal}
+      />
     </div>
   );
 };
