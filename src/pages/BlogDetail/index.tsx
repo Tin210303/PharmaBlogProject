@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { User, MoreHorizontal, Heart, Eye, Facebook, Twitter, Linkedin, Share, X, ZoomIn } from 'lucide-react';
+import { User, MoreHorizontal, Heart, Eye, Facebook, Twitter, Linkedin, Share } from 'lucide-react';
 import styles from './index.module.css';
 import { useParams } from 'react-router-dom';
 import { blogService } from '../../service/blogService';
