@@ -1,5 +1,5 @@
 // BlogSection.tsx
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from './index.module.css';
 import RecentPosts from './RecentPosts';
 import QuoteSection from './QuoteSection';
@@ -32,11 +32,6 @@ const Home: React.FC<BlogSectionProps> = ({
   ]
 }) => {
   const navigate = useNavigate();
-  useEffect(() => {
-    fetch("https://public-api.wordpress.com/wp/v2/sites/clinpharmanews.wordpress.com/posts")
-      .then(res => res.json())
-      .then(data => console.log(data));
-}, []);
   
   return (
     <section className={`${styles.blogSection} ${className || ''}`}>
