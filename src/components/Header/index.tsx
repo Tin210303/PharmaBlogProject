@@ -13,8 +13,8 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
       <div className={styles.container}>
         {/* Logo và tiêu đề */}
         <div className={styles.brand}>
-          <h1 className={styles.title}>Inner Pieces</h1>
-          <p className={styles.subtitle}>Thoughts on Lifestyle & Mental Health</p>
+          <h1 className={styles.title}>Pharma News</h1>
+          <p className={styles.subtitle}>From Classroom to Clinic: Learning and Applying Pharmacy</p>
         </div>
 
         {/* Menu điều hướng */}

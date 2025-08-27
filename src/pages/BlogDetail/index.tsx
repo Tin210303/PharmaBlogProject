@@ -1,119 +1,24 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { User, MoreHorizontal, Heart, Eye, Facebook, Twitter, Linkedin, Share } from 'lucide-react';
-import styles from './index.module.css';
+import { User, MoreHorizontal, Heart, Facebook, Twitter, Linkedin, Share } from 'lucide-react';
 import { useParams } from 'react-router-dom';
 import { blogService } from '../../service/blogService';
-
-interface BlogPost {
-  id: number;
-  title: string;
-  subtitle: string;
-  content: string;
-  image: string;
-  author: string;
-  date: string;
-  readTime: string;
-  views: number;
-  likes: number;
-  isLiked?: boolean;
-}
-
-interface RecentPost {
-  id: number;
-  title: string;
-  image: string;
-  views: number;
-  likes: number;
-}
-
-interface Comment {
-  id: number;
-  author: string;
-  content: string;
-  date: string;
-  avatar?: string;
-}
-
-// Image Zoom Modal Component
-const ImageZoomModal: React.FC<{
-  src: string;
-  alt: string;
-  isOpen: boolean;
-  onClose: () => void;
-}> = ({ src, alt, isOpen, onClose }) => {
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        onClose();
-      }
-    };
-
-    if (isOpen) {
-      document.addEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-
-    return () => {
-      document.removeEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'unset';
-    };
-  }, [isOpen, onClose]);
-
-  if (!isOpen) return null;
-
-  return (
-    <div 
-      className={styles.imageZoomModal} 
-      onClick={onClose}
-      role="dialog"
-      aria-label="Zoomed image"
-    >
-      <div className={styles.modalOverlay} />
-      <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-        <img 
-          src={src} 
-          alt={alt} 
-          className={styles.zoomedImage}
-        />
-      </div>
-    </div>
-  );
-};
+import { ImageZoomModal } from './ImageZoomModal';
+import type { BlogPost } from '../../types/blog';
+import styles from './index.module.css';
+import { CommentsSection } from './CommentSection';
+import { RecentPostsSection } from './RecentPostsSection';
 
 const BlogDetail: React.FC = () => {
   const [post, setPost] = useState<BlogPost | null>(null);
+
   const [loading, setLoading] = useState(true);
+
   const [error, setError] = useState<string | null>(null);
+
   const { slug } = useParams<{ slug: string }>();
-  const [comments] = useState<Comment[]>([]);
-  const [commentText, setCommentText] = useState('');
-  const [recentPosts] = useState<RecentPost[]>([
-    {
-      id: 2,
-      title: "Can't stop scrolling through your friends'...",
-      image: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&h=300&fit=crop",
-      views: 785,
-      likes: 21
-    },
-    {
-      id: 3,
-      title: "How I stopped being afraid of being weak",
-      image: "https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=400&h=300&fit=crop",
-      views: 641,
-      likes: 21
-    },
-    {
-      id: 4,
-      title: "5 great side effects of running with music",
-      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
-      views: 505,
-      likes: 8
-    }
-  ]);
 
   const [isLiked, setIsLiked] = useState(false);
+
   const [likesCount, setLikesCount] = useState(0);
   
   // Image zoom states
@@ -195,14 +100,6 @@ const BlogDetail: React.FC = () => {
         navigator.clipboard.writeText(url);
         alert('Link copied to clipboard!');
         break;
-    }
-  };
-
-  const handleCommentSubmit = () => {
-    if (commentText.trim()) {
-      // Handle comment submission logic here
-      console.log('Comment submitted:', commentText);
-      setCommentText('');
     }
   };
 
@@ -300,114 +197,10 @@ const BlogDetail: React.FC = () => {
       </article>
 
       {/* Recent Posts Section */}
-      <section className={styles.recentPostsSection}>
-        <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>Recent Posts</h2>
-          <button className={styles.seeAllButton}>See All</button>
-        </div>
-
-        <div className={styles.recentPostsGrid}>
-          {recentPosts.map((recentPost) => (
-            <article key={recentPost.id} className={styles.recentPostCard}>
-              <div className={styles.recentPostImage}>
-                <img 
-                  src={recentPost.image} 
-                  alt={recentPost.title}
-                />
-              </div>
-              <div className={styles.recentPostContent}>
-                <h3 className={styles.recentPostTitle}>{recentPost.title}</h3>
-                <div className={styles.recentPostStats}>
-                  <span className={styles.recentPostViews}>
-                    <Eye size={14} />
-                    {recentPost.views}
-                  </span>
-                  <span className={styles.recentPostLikes}>
-                    <Heart size={14} />
-                    {recentPost.likes}
-                  </span>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
+      <RecentPostsSection />
 
       {/* Comments Section */}
-      <section className={styles.commentsSection}>
-        <h2 className={styles.commentsTitle}>Comments</h2>
-        
-        {/* Comment Form */}
-        <div className={styles.commentForm}>
-          <textarea
-            value={commentText}
-            onChange={(e) => setCommentText(e.target.value)}
-            placeholder="Write a comment..."
-            className={styles.commentInput}
-            rows={4}
-          />
-          
-          <div className={styles.commentActions}>
-            <div className={styles.commentTools}>
-              <button className={styles.commentTool} title="Add emoji">
-                😊
-              </button>
-              <button className={styles.commentTool} title="Add image">
-                📷
-              </button>
-              <button className={styles.commentTool} title="Add GIF">
-                GIF
-              </button>
-              <button className={styles.commentTool} title="Add video">
-                🎥
-              </button>
-            </div>
-            
-            <div className={styles.commentSubmitActions}>
-              <button className={styles.loginLink}>
-                Log in to publish as a member
-              </button>
-              <div className={styles.submitButtons}>
-                <button 
-                  onClick={() => setCommentText('')}
-                  className={styles.cancelButton}
-                >
-                  Cancel
-                </button>
-                <button 
-                  onClick={handleCommentSubmit}
-                  className={styles.publishButton}
-                  disabled={!commentText.trim()}
-                >
-                  Publish
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Comments List */}
-        {comments.length === 0 ? (
-          <div className={styles.noComments}>
-            <p>No comments yet. Be the first to share your thoughts!</p>
-          </div>
-        ) : (
-          <div className={styles.commentsList}>
-            {comments.map((comment) => (
-              <div key={comment.id} className={styles.comment}>
-                <div className={styles.commentAvatar}>
-                  <User size={16} />
-                </div>
-                <div className={styles.commentContent}>
-                  <div className={styles.commentAuthor}>{comment.author}</div>
-                  <div className={styles.commentText}>{comment.content}</div>
-                  <div className={styles.commentDate}>{comment.date}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-      </section>
+      <CommentsSection />
 
       {/* Image Zoom Modal */}
       <ImageZoomModal
