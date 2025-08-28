@@ -1,6 +1,7 @@
 // AboutSection.tsx
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './index.module.css';
+import { useTranslation } from 'react-i18next';
 
 interface AboutSectionProps {
   className?: string;
@@ -24,6 +25,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({
   buttonText = "Read More",
   onButtonClick
 }) => {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -81,18 +83,18 @@ const AboutSection: React.FC<AboutSectionProps> = ({
         {/* Right side - Content */}
         <div className={styles.contentSection}>
           <div className={styles.content}>
-            <h2 className={styles.greeting}>Hi, I'm {name}</h2>
+            <h2 className={styles.greeting}>{t("about.greeting")} {name}</h2>
             
-            <p className={styles.titleText}>{title}</p>
+            <p className={styles.titleText}>{t("about.title")}</p>
             
-            <p className={styles.description}>{description}</p>
+            <p className={styles.description}>{t("about.description")}</p>
             
             {buttonText && (
               <button 
                 className={styles.readMoreBtn}
                 onClick={handleButtonClick}
               >
-                {buttonText}
+                {t("about.readMore")}
               </button>
             )}
           </div>

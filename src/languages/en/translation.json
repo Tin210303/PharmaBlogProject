@@ -1,0 +1,67 @@
+{
+    "brand": "Pharma News",
+    "subtitle": "From Classroom to Clinic: Learning and Applying Pharmacy",
+    "nav": {
+      "home": "Home",
+      "blog": "Blog",
+      "about": "About",
+      "contact": "Contact"
+    },
+    "welcome": "Welcome to my website",
+    "changeLanguage": "Change language",
+  
+    "footer": {
+      "company": "Inner Pieces",
+      "contactTitle": "Contact",
+      "contactSubtitle": "Ask me anything",
+      "firstName": "First Name *",
+      "lastName": "Last Name *",
+      "email": "Email *",
+      "message": "Leave Us a Message...",
+      "placeholderMessage": "Your message here...",
+      "submit": "Submit",
+      "sending": "Sending...",
+      "success": "Message sent successfully!",
+      "error": "Error sending message. Please try again.",
+      "firstNameRequired": "First name is required",
+      "lastNameRequired": "Last name is required",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Email is invalid",
+      "messageRequired": "Message is required",
+      "phone": "123-456-7890",
+      "emailInfo": "info@mysite.com",
+      "copyright": "© 2035 by Inner Pieces.",
+      "poweredBy": "Powered and secured by Wix"
+    },
+  
+    "blogSection": {
+      "title": "My Thoughts",
+      "allPosts": "All Posts",
+      "samplePostTitle": "Detox your body from the inside out",
+      "samplePostSubtitle": "Discover how pharmacy-based solutions can support liver function, flush out toxins, and restore your energy safely and effectively. Small changes can make a big difference to your health."
+    },
+  
+    "recentPosts": {
+      "title": "Recent Posts",
+      "loading": "Loading posts...",
+      "error": "Error"
+    },
+  
+    "quote": {
+      "defaultText": "I always get to where I'm going by walking away from where I have been.",
+      "author": "Winnie the Pooh",
+      "source": "A.A. Milne"
+    },
+  
+    "about": {
+      "greeting": "Hi, I'm",
+      "title": "A pharmacy blogger. Passionate about sharing knowledge, experiences, and insights on healthcare and everything that helps improve well-being.",
+      "description": "I'm a paragraph. Click here to add your own text and edit me. It's easy. Just click \"Edit Text\" or double click me to add your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I'm a great place for you to tell a story and let your users know a little more about you.",
+      "readMore": "Read More"
+    },
+
+    "blog": {
+
+    }
+  }
+  

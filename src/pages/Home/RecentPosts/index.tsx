@@ -3,12 +3,14 @@ import React, { useEffect, useRef, useState } from 'react';
 import styles from './index.module.css';
 import { useBlog } from '../../../hooks/useBlog';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 interface RecentPostsProps {
   className?: string;
 }
 
 const RecentPosts: React.FC<RecentPostsProps> = ({ className }) => {
+  const { t } = useTranslation();
   const { posts, loading, error } = useBlog({
     initialParams: { per_page: 3, orderby: 'date', order: 'desc' },
     autoFetch: true
@@ -63,11 +65,11 @@ const RecentPosts: React.FC<RecentPostsProps> = ({ className }) => {
     <section className={`${styles.recentPosts} ${className || ''}`}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}>Recent Posts</h2>
+          <h2 className={styles.title}>{t("recentPosts.title")}</h2>
         </div>
 
-        {loading && <p>Loading posts...</p>}
-        {error && <p className={styles.error}>Error: {error}</p>}
+        {loading && <p>{t("recentPosts.loading")}</p>}
+        {error && <p className={styles.error}>{t("recentPosts.error")}: {error}</p>}
 
         <div className={styles.postsList}>
           {posts.map((post, index) => (

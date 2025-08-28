@@ -1,6 +1,7 @@
 // QuoteSection.tsx
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './index.module.css';
+import { useTranslation } from 'react-i18next';
 
 interface Quote {
   text: string;
@@ -25,6 +26,7 @@ const QuoteSection: React.FC<QuoteSectionProps> = ({
   image = 'https://static.wixstatic.com/media/f5af78_81b23a68d5ac4cb699ddd6f7fbd93035~mv2_d_3000_2246_s_2.jpg/v1/fill/w_440,h_440,fp_0.50_0.50,q_90,enc_avif,quality_auto/f5af78_81b23a68d5ac4cb699ddd6f7fbd93035~mv2_d_3000_2246_s_2.webp',
   imageAlt = 'Hand reaching towards light'
 }) => {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -67,7 +69,7 @@ const QuoteSection: React.FC<QuoteSectionProps> = ({
           <div className={styles.quoteWrapper}>
             <div className={styles.openQuote}>"</div>
             <blockquote className={styles.quoteText}>
-              {quote.text}
+              {t("quote.defaultText")}
             </blockquote>
             <div className={styles.closeQuote}>"</div>
           </div>

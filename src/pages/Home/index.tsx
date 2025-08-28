@@ -5,6 +5,7 @@ import RecentPosts from './RecentPosts';
 import QuoteSection from './QuoteSection';
 import AboutSection from './AboutSection';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 interface BlogPost {
   id: string;
@@ -32,6 +33,8 @@ const Home: React.FC<BlogSectionProps> = ({
   ]
 }) => {
   const navigate = useNavigate();
+
+  const { t } = useTranslation();
   
   return (
     <section className={`${styles.blogSection} ${className || ''}`}>
@@ -50,7 +53,7 @@ const Home: React.FC<BlogSectionProps> = ({
         {/* Right side - Blog content */}
         <div className={styles.contentSection}>
           <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>My Thoughts</h2>
+            <h2 className={styles.sectionTitle}>{t("blogSection.title")}</h2>
           </div>
 
           <div className={styles.blogPosts}>
@@ -65,8 +68,8 @@ const Home: React.FC<BlogSectionProps> = ({
                 </div>
                 
                 <div className={styles.postContent}>
-                  <h3 className={styles.postTitle}>{post.title}</h3>
-                  <p className={styles.postSubtitle}>{post.subtitle}</p>
+                  <h3 className={styles.postTitle}>{t("blogSection.samplePostTitle")}</h3>
+                  <p className={styles.postSubtitle}>{t("blogSection.samplePostSubtitle")}</p>
                 </div>
 
                 <div className={styles.btnContainer}>
@@ -74,7 +77,7 @@ const Home: React.FC<BlogSectionProps> = ({
                     className={styles.seeAllBtn}
                     onClick={() => navigate('/blog')}
                   >
-                    All Posts
+                    {t("blogSection.allPosts")}
                   </button>
                 </div>
                

@@ -99,7 +99,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, onLike, onPostClick }) => {
 };
 
 const Blog: React.FC = () => {
-  const [activeFilter, setActiveFilter] = useState('All Posts');
+  const [activeFilter, setActiveFilter] = useState('Tất cả');
 
   // Lấy posts từ hook useBlog
   const { posts, loading, error } = useBlog({
@@ -109,7 +109,7 @@ const Blog: React.FC = () => {
 
   const navigate = useNavigate();
 
-  const filters = ['All Posts', 'Lifestyle', 'Self-Care', 'Productivity', 'Mindfulness'];
+  const filters = ['Tất cả', 'Gần đây', 'Điểm tin', 'Góc học thuật', 'Chuyện bên lề'];
 
   // Toggle like cho 1 post
   const handleLike = (postId: number) => {

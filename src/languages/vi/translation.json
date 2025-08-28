@@ -1,0 +1,63 @@
+{
+    "brand": "Tin tức Dược",
+    "subtitle": "Từ giảng đường đến lâm sàng: Học và ứng dụng ngành Dược",
+    "nav": {
+      "home": "Trang chủ",
+      "blog": "Bài viết",
+      "about": "Giới thiệu",
+      "contact": "Liên hệ"
+    },
+    "welcome": "Chào mừng bạn đến với website của tôi",
+    "changeLanguage": "Đổi ngôn ngữ",
+  
+    "footer": {
+      "company": "Inner Pieces",
+      "contactTitle": "Liên hệ",
+      "contactSubtitle": "Hãy hỏi tôi bất cứ điều gì",
+      "firstName": "Tên *",
+      "lastName": "Họ *",
+      "email": "Email *",
+      "message": "Để lại lời nhắn cho chúng tôi...",
+      "placeholderMessage": "Nhập tin nhắn của bạn...",
+      "submit": "Gửi",
+      "sending": "Đang gửi...",
+      "success": "Gửi tin nhắn thành công!",
+      "error": "Gửi thất bại, vui lòng thử lại.",
+      "firstNameRequired": "Vui lòng nhập tên",
+      "lastNameRequired": "Vui lòng nhập họ",
+      "emailRequired": "Vui lòng nhập email",
+      "emailInvalid": "Email không hợp lệ",
+      "messageRequired": "Vui lòng nhập tin nhắn",
+      "phone": "123-456-7890",
+      "emailInfo": "info@mysite.com",
+      "copyright": "© 2035 bởi Inner Pieces.",
+      "poweredBy": "Vận hành và bảo mật bởi Wix"
+    },
+  
+    "blogSection": {
+      "title": "Suy ngẫm của tôi",
+      "allPosts": "Tất cả bài viết",
+      "samplePostTitle": "Thải độc cơ thể từ bên trong",
+      "samplePostSubtitle": "Khám phá cách các giải pháp dựa trên dược phẩm có thể hỗ trợ chức năng gan, đào thải độc tố và phục hồi năng lượng một cách an toàn và hiệu quả. Những thay đổi nhỏ có thể tạo nên sự khác biệt lớn cho sức khỏe của bạn."
+    },
+  
+    "recentPosts": {
+      "title": "Bài viết gần đây",
+      "loading": "Đang tải bài viết...",
+      "error": "Có lỗi xảy ra"
+    },
+  
+    "quote": {
+      "defaultText": "Tôi luôn đến được nơi mình muốn bằng cách bước đi khỏi nơi mình đã ở.",
+      "author": "Gấu Pooh",
+      "source": "A.A. Milne"
+    },
+  
+    "about": {
+      "greeting": "Xin chào, tôi là",
+      "title": "Một blogger ngành Dược. Đam mê chia sẻ kiến thức, trải nghiệm và những hiểu biết về y tế và mọi thứ giúp nâng cao sức khỏe.",
+      "description": "Tôi là một đoạn văn. Nhấp để thêm văn bản của bạn và chỉnh sửa. Bạn có thể kéo thả nó ở bất cứ đâu trên trang. Đây là nơi tuyệt vời để bạn kể câu chuyện của mình và giúp người dùng hiểu thêm về bạn.",
+      "readMore": "Xem thêm"
+    }
+  }
+  
