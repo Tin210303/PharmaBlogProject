@@ -18,8 +18,6 @@ interface AboutSectionProps {
 const AboutSection: React.FC<AboutSectionProps> = ({ 
   className,
   name = "Dena",
-  title = "A pharmacy blogger. Passionate about sharing knowledge, experiences, and insights on healthcare and everything that helps improve well-being.",
-  description = "I'm a paragraph. Click here to add your own text and edit me. It's easy. Just click \"Edit Text\" or double click me to add your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I'm a great place for you to tell a story and let your users know a little more about you.",
   image = 'https://static.wixstatic.com/media/f5af78_6af31cb479544a4cb2d3897da7841094~mv2_d_6720_4480_s_4_2.jpg/v1/crop/x_2553,y_0,w_3425,h_4480/fill/w_420,h_548,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/about_HP_image.jpg',
   imageAlt = 'Portrait of Dena in purple jacket',
   buttonText = "Read More",
