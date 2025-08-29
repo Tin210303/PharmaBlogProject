@@ -200,7 +200,7 @@ const BlogDetail: React.FC = () => {
       <RecentPostsSection />
 
       {/* Comments Section */}
-      <CommentsSection />
+      {post && <CommentsSection postId={post.id} />}
 
       {/* Image Zoom Modal */}
       <ImageZoomModal

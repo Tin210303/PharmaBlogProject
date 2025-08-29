@@ -7,6 +7,7 @@ import Blog from "../pages/Blog";
 import About from "../pages/About";
 import ScrollToTop from "../service/ScrollToTop";
 import BlogDetail from "../pages/BlogDetail";
+import Callback from "../pages/CallBack";
 
 const AppRoutes: FC = () => {
     return (
@@ -20,6 +21,8 @@ const AppRoutes: FC = () => {
                         <Route path="about" element={<About />} />
                         <Route path="posts/:slug" element={<BlogDetail />} />
                     </Route>
+
+                    <Route path="oauth/callback" element={<Callback />} />
                 </Route>
             </Routes>
         </BrowserRouter>
