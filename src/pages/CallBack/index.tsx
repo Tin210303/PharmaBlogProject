@@ -1,10 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const CLIENT_ID = "123712";
-const CLIENT_SECRET = "vaQj2mW8OiJB7nvgrvIliJo7IpRJEs06GOLFy8d0aRSN571XfQGhCfUTVcXFubIS";
-const REDIRECT_URI = "https://pharmanews.vercel.app/oauth/callback";
-
 export default function Callback() {
   const navigate = useNavigate();
 
@@ -12,27 +8,27 @@ export default function Callback() {
     const code = new URLSearchParams(window.location.search).get("code");
 
     if (code) {
-      fetch("https://public-api.wordpress.com/oauth2/token", {
+      fetch("/api/get-token", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({
-          client_id: CLIENT_ID,
-          client_secret: CLIENT_SECRET,
-          redirect_uri: REDIRECT_URI,
-          grant_type: "authorization_code",
-          code,
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code }),
       })
         .then((res) => res.json())
         .then((data) => {
           if (data.access_token) {
-            console.log(data);
+            console.log("Token:", data);
             localStorage.setItem("wp_token", data.access_token);
-            navigate("/"); // quay về trang chính
+            navigate("/");
+          } else {
+            console.error("Lỗi khi lấy token:", data);
+            navigate("/");
           }
+        })
+        .catch((err) => {
+          console.error("Fetch error:", err);
+          navigate("/");
         });
     } else {
-      // Không có code => chuyển về trang chính
       navigate("/");
     }
   }, [navigate]);
