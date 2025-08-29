@@ -204,20 +204,20 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
                 </div>
                 
                 {/* Menu Items */}
-                <button className={styles.userDropdownItem}>
+                {/* <button className={styles.userDropdownItem}>
                   <User className="w-16" />
                   <span>{t("auth.profile")}</span>
                 </button>
                 
                 <button className={styles.userDropdownItem}>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c..."/>
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0..."/>
                   </svg>
                   <span>{t("auth.settings")}</span>
                 </button>
                 
-                <div className={styles.userDropdownDivider}></div>
+                <div className={styles.userDropdownDivider}></div> */}
                 
                 <button
                   onClick={logout}

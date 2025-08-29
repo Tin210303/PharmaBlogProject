@@ -19,10 +19,10 @@ export const CommentsSection = ({ postId }: CommentsSectionProps) => {
   const [commentText, setCommentText] = useState("");
 
   const [comments, setComments] = useState<Comment[]>([]);
-  
+
   const [loading, setLoading] = useState(false);
 
-  const { isLoggedIn, userInfo, login, logout } = useAuth();
+  const { isLoggedIn, userInfo, login } = useAuth();
 
   useEffect(() => {
     if (!postId) return;
@@ -107,9 +107,6 @@ export const CommentsSection = ({ postId }: CommentsSectionProps) => {
                 <span>
                   Bình luận với tư cách {userInfo?.display_name || userInfo?.username}
                 </span>
-                <button onClick={logout} className={styles.logoutButton}>
-                  Đăng xuất
-                </button>
               </div>
             ) : (
               <button onClick={login} className={styles.loginLink}>
