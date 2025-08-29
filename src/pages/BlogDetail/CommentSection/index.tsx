@@ -191,7 +191,7 @@ export const CommentsSection = ({ postId }: CommentsSectionProps) => {
             {/* Hiển thị nút login/logout dựa vào trạng thái */}
             {isLoggedIn ? (
               <div className={styles.userInfo}>
-                <span>Xin chào, {userInfo?.display_name || userInfo?.username}!</span>
+                <span>Bình luận với tư cách {userInfo?.display_name || userInfo?.username}!</span>
                 <button onClick={handleLogout} className={styles.logoutButton}>
                   Đăng xuất
                 </button>

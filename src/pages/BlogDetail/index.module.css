@@ -464,86 +464,86 @@
 /* Responsive Design */
 @media (max-width: 768px) {
     .blogDetailContainer {
-    padding: 0 15px;
+        padding: 0 15px;
     }
 
     .postHeader,
     .postContent,
     .shareSection,
     .postStats {
-    padding-left: 20px;
-    padding-right: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     .postTitle {
-    font-size: 2rem;
+        font-size: 2rem;
     }
 
     .recentPostsGrid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
 
     .commentSubmitActions {
-    flex-direction: column;
-    align-items: stretch;
+        flex-direction: column;
+        align-items: stretch;
     }
 
     .submitButtons {
-    justify-content: flex-end;
+        justify-content: flex-end;
     }
 
     .commentsSection {
-    padding: 20px;
-    margin: 0 -15px;
-    border-radius: 0;
+        padding: 20px;
+        margin: 0 -15px;
+        border-radius: 0;
     }
 }
 
 @media (max-width: 480px) {
     .postTitle {
-    font-size: 1.75rem;
+        font-size: 1.75rem;
     }
 
     .featuredImage {
-    height: 250px;
+        height: 250px;
     }
 
     .postHeader,
     .postContent,
     .shareSection,
     .postStats {
-    padding-left: 15px;
-    padding-right: 15px;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
     .shareSection {
-    justify-content: center;
+        justify-content: center;
     }
 
     .sectionHeader {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
     }
 
     .seeAllButton {
-    align-self: flex-end;
+        align-self: flex-end;
     }
 
     .recentPostsGrid {
-    grid-template-columns: 1fr;
-    gap: 15px;
+        grid-template-columns: 1fr;
+        gap: 15px;
     }
 
     .commentTools {
-    flex-wrap: wrap;
-    gap: 8px;
+        flex-wrap: wrap;
+        gap: 8px;
     }
 
     .commentTool {
-    padding: 6px 10px;
-    font-size: 12px;
+        padding: 6px 10px;
+        font-size: 12px;
     }
 }
 
@@ -566,12 +566,12 @@
 
 @keyframes fadeInUp {
     from {
-    opacity: 0;
-    transform: translateY(30px);
+        opacity: 0;
+        transform: translateY(30px);
     }
     to {
-    opacity: 1;
-    transform: translateY(0);
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
@@ -610,16 +610,16 @@
     .shareSection,
     .commentsSection,
     .recentPostsSection {
-    display: none;
+        display: none;
     }
 
     .blogPost {
-    box-shadow: none;
-    border: 1px solid #ccc;
+        box-shadow: none;
+        border: 1px solid #ccc;
     }
 
     .postContent {
-    color: black;
+        color: black;
     }
 }
 
@@ -732,46 +732,46 @@
 /* Animations */
 @keyframes fadeIn {
     from {
-    opacity: 0;
+        opacity: 0;
     }
     to {
-    opacity: 1;
+        opacity: 1;
     }
 }
 
 @keyframes zoomIn {
     from {
-    opacity: 0;
-    transform: scale(0.8);
+        opacity: 0;
+        transform: scale(0.8);
     }
     to {
-    opacity: 1;
-    transform: scale(1);
+        opacity: 1;
+        transform: scale(1);
     }
 }
 
 /* Mobile responsive */
 @media (max-width: 768px) {
     .imageZoomModal {
-    padding: 10px;
+        padding: 10px;
     }
     
     .closeButton {
-    top: -40px;
-    width: 35px;
-    height: 35px;
+        top: -40px;
+        width: 35px;
+        height: 35px;
     }
     
     .modalContent {
-    max-width: 95vw;
-    max-height: 95vh;
+        max-width: 95vw;
+        max-height: 95vh;
     }
 }
 
 /* Tablet responsive */
 @media (max-width: 1024px) {
     .modalContent {
-    max-width: 85vw;
-    max-height: 85vh;
+        max-width: 85vw;
+        max-height: 85vh;
     }
 }
