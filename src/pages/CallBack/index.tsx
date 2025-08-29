@@ -1,3 +1,4 @@
+// /src/pages/Callback.jsx
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -6,31 +7,33 @@ export default function Callback() {
 
   useEffect(() => {
     const code = new URLSearchParams(window.location.search).get("code");
+    if (!code) {navigate("/")};
 
-    if (code) {
-      fetch("/api/get-token", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ code }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.access_token) {
-            console.log("Token:", data);
-            localStorage.setItem("wp_token", data.access_token);
-            navigate("/");
-          } else {
-            console.error("Lỗi khi lấy token:", data);
-            navigate("/");
-          }
-        })
-        .catch((err) => {
-          console.error("Fetch error:", err);
-          navigate("/");
+    (async () => {
+      try {
+        const res = await fetch("/api/get-token", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ code }),
         });
-    } else {
-      navigate("/");
-    }
+        const data = await res.json();
+
+        if (data.access_token) {
+          localStorage.setItem("wp_token", data.access_token);
+          if (data.refresh_token) {
+            localStorage.setItem("wp_refresh_token", data.refresh_token);
+          }
+          navigate("/");
+        } else {
+          console.error("WP token error:", data);
+          alert(`Login failed: ${data.error_description || data.error || "Unknown error"}`);
+          navigate("/");
+        }
+      } catch (e) {
+        console.error(e);
+        navigate("/");
+      }
+    })();
   }, [navigate]);
 
   return <p>Đang xử lý đăng nhập...</p>;
