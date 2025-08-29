@@ -1,8 +1,10 @@
 // Header.tsx
 import React, { useEffect, useRef, useState } from 'react';
-import styles from './index.module.css';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useAuth } from "../../context/AuthContext";
+import styles from './index.module.css';
+import { ChevronDown, LogIn, LogOut, User } from 'lucide-react';
 
 interface HeaderProps {
   className?: string;
@@ -27,6 +29,12 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
   const [open, setOpen] = useState(false);
   
   const menuRef = useRef<HTMLDivElement>(null);
+
+  const { isLoggedIn, userInfo, login, logout } = useAuth();
+
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
+  
+  const userMenuRef = useRef(null);
 
   // Hàm đổi ngôn ngữ
   const changeLanguage = (lang: string) => {
@@ -149,6 +157,79 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
             </div>
           )}
         </div>
+
+        {/* Authentication */}
+        {!isLoggedIn ? (
+          <button
+            onClick={login}
+            className={styles.authButton}
+          >
+            <LogIn className="w-16" />
+            <span>{t("auth.login")}</span>
+          </button>
+        ) : (
+          <div className={styles.userMenuWrapper} ref={userMenuRef}>
+            <button
+              onClick={() => setUserMenuOpen(!userMenuOpen)}
+              className={styles.userMenuButton}
+            >
+              {userInfo?.avatar_URL ? (
+                <img 
+                  src={userInfo.avatar_URL} 
+                  alt="User Avatar"
+                  className={styles.userAvatar}
+                />
+              ) : (
+                <div className={styles.userAvatarFallback}>
+                  <User className={styles.userAvatarFallbackIcon} />
+                </div>
+              )}
+              <div className={styles.userInfoBlock}>
+                <p className={styles.userInfoName}>
+                  {userInfo?.display_name || userInfo?.username || 'User'}
+                </p>
+                <p className={styles.userInfoEmail}>{userInfo?.email}</p>
+              </div>
+              <ChevronDown className={`${styles.chevron} ${userMenuOpen ? styles.chevronOpen : ''}`} />
+            </button>
+
+            {userMenuOpen && (
+              <div className={styles.userDropdown}>
+                {/* User Info (mobile) */}
+                <div className={styles.userDropdownInfoMobile}>
+                  <p className={styles.userDropdownInfoMobileName}>
+                    {userInfo?.display_name || userInfo?.username || 'User'}
+                  </p>
+                  <p className={styles.userDropdownInfoMobileEmail}>{userInfo?.email}</p>
+                </div>
+                
+                {/* Menu Items */}
+                <button className={styles.userDropdownItem}>
+                  <User className="w-16" />
+                  <span>{t("auth.profile")}</span>
+                </button>
+                
+                <button className={styles.userDropdownItem}>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c..."/>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0..."/>
+                  </svg>
+                  <span>{t("auth.settings")}</span>
+                </button>
+                
+                <div className={styles.userDropdownDivider}></div>
+                
+                <button
+                  onClick={logout}
+                  className={`${styles.userDropdownItem} ${styles.userDropdownItemDanger}`}
+                >
+                  <LogOut className="w-16" />
+                  <span>{t("auth.logout")}</span>
+                </button>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </header>
   );

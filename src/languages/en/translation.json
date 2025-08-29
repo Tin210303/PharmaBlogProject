@@ -9,6 +9,11 @@
     },
     "welcome": "Welcome to my website",
     "changeLanguage": "Change language",
+
+    "auth": {
+      "login": "Login",
+      "logout": "Logout"
+    },
   
     "footer": {
       "company": "Inner Pieces",
