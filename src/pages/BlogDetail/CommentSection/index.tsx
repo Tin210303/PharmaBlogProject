@@ -244,8 +244,13 @@ export const CommentsSection = ({ postId }: CommentsSectionProps) => {
                 )}
               </div>
               <div className={styles.commentContent}>
-                <div className={styles.commentAuthor}>
-                  {comment.author_name}
+                <div className="d-flex gap-8px align-center">
+                  <div className={styles.commentAuthor}>
+                    {comment.author_name}
+                  </div>
+                  <div className={styles.commentDate}>
+                    {new Date(comment.date).toLocaleString()}
+                  </div>
                 </div>
                 <div
                   className={styles.commentText}
@@ -253,9 +258,6 @@ export const CommentsSection = ({ postId }: CommentsSectionProps) => {
                     __html: comment.content.rendered,
                   }}
                 />
-                <div className={styles.commentDate}>
-                  {new Date(comment.date).toLocaleString()}
-                </div>
               </div>
             </div>
           ))}
