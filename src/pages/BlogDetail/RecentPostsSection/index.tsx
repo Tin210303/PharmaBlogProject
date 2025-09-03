@@ -7,12 +7,14 @@ import styles from '../index.module.css';
 
 export const RecentPostsSection = () => {
     const { t } = useTranslation();
+
     const { posts, loading, error } = useBlog({
         initialParams: { per_page: 3, orderby: 'date', order: 'desc' },
         autoFetch: true
     });
     
     const [visiblePosts, setVisiblePosts] = useState<Set<number>>(new Set());
+    
     const postRefs = useRef<Map<number, HTMLElement>>(new Map());
     
     useEffect(() => {

@@ -100,15 +100,13 @@ export const CommentsSection = ({ postId }: CommentsSectionProps) => {
           <div className={styles.commentTools}>
             <button disabled={!isLoggedIn}>😊</button>
             <button disabled={!isLoggedIn}>📷</button>
-            <button disabled={!isLoggedIn}>GIF</button>
-            <button disabled={!isLoggedIn}>🎥</button>
           </div>
 
           <div className={styles.commentSubmitActions}>
             {isLoggedIn ? (
               <div className={styles.userInfo}>
                 <span>
-                  Bình luận với tư cách {userInfo?.display_name || userInfo?.username}
+                  {t("comments.comment")} {userInfo?.display_name || userInfo?.username}
                 </span>
               </div>
             ) : (
