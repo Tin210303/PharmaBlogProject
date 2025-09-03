@@ -1,9 +1,9 @@
 // RecentPosts.tsx
 import React, { useEffect, useRef, useState } from 'react';
-import styles from './index.module.css';
 import { useBlog } from '../../../hooks/useBlog';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import styles from './index.module.css';
 
 interface RecentPostsProps {
   className?: string;

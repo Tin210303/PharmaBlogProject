@@ -1,50 +1,87 @@
 import { Eye, Heart } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useBlog } from "../../../hooks/useBlog";
+import { useTranslation } from "react-i18next";
 import styles from '../index.module.css';
 
-interface RecentPost {
-    id: number;
-    title: string;
-    image: string;
-    views: number;
-    likes: number;
-}
-
 export const RecentPostsSection = () => {
-    const [recentPosts] = useState<RecentPost[]>([
-        {
-            id: 2,
-            title: "Can't stop scrolling through your friends'...",
-            image: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&h=300&fit=crop",
-            views: 785,
-            likes: 21
-        },
-        {
-            id: 3,
-            title: "How I stopped being afraid of being weak",
-            image: "https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=400&h=300&fit=crop",
-            views: 641,
-            likes: 21
-        },
-        {
-            id: 4,
-            title: "5 great side effects of running with music",
-            image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
-            views: 505,
-            likes: 8
+    const { t } = useTranslation();
+    const { posts, loading, error } = useBlog({
+        initialParams: { per_page: 3, orderby: 'date', order: 'desc' },
+        autoFetch: true
+    });
+    
+    const [visiblePosts, setVisiblePosts] = useState<Set<number>>(new Set());
+    const postRefs = useRef<Map<number, HTMLElement>>(new Map());
+    
+    useEffect(() => {
+        if (!posts.length) return;
+    
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    const postId = entry.target.getAttribute('data-post-id');
+                    if (postId) {
+                        const idNum = parseInt(postId);
+                        if (entry.isIntersecting) {
+                            setVisiblePosts((prev) => new Set([...prev, idNum]));
+                        }
+                    }
+                });
+            },
+            {
+                threshold: 0.2,
+                rootMargin: '0px 0px -50px 0px',
+            }
+        );
+    
+        postRefs.current.forEach((ref) => {
+        if (ref) observer.observe(ref);
+        });
+    
+        return () => {
+        postRefs.current.forEach((ref) => {
+            if (ref) observer.unobserve(ref);
+        });
+        };
+    }, [posts]);
+    
+    const setPostRef = (postId: number) => (el: HTMLElement | null) => {
+        if (el) {
+            postRefs.current.set(postId, el);
+        } else {
+            postRefs.current.delete(postId);
         }
-    ]);
+    };
+    
+    const navigate = useNavigate();
 
     return (
         <section className={styles.recentPostsSection}>
             <div className={styles.sectionHeader}>
                 <h2 className={styles.sectionTitle}>Recent Posts</h2>
-                <button className={styles.seeAllButton}>See All</button>
+                <button 
+                    className={styles.seeAllButton}
+                    onClick={() => navigate("/blog")}
+                >
+                    See All
+                </button>
             </div>
 
+            {loading && <p>{t("recentPosts.loading")}</p>}
+            {error && <p className={styles.error}>{t("recentPosts.error")}: {error}</p>}
+        
             <div className={styles.recentPostsGrid}>
-                {recentPosts.map((recentPost) => (
-                    <article key={recentPost.id} className={styles.recentPostCard}>
+                {posts.map((recentPost) => (
+                    <article 
+                        key={recentPost.id} 
+                        ref={setPostRef(recentPost.id)}
+                        className={`${styles.recentPostCard} ${
+                            visiblePosts.has(recentPost.id) ? styles.visible : ''
+                        }`}
+                        onClick={() => navigate(`/posts/${recentPost.slug}`)}
+                    >
                         <div className={styles.recentPostImage}>
                             <img 
                                 src={recentPost.image} 
