@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useAuth } from "../../../context/AuthContext";
 import styles from "../index.module.css";
 import { User } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface Comment {
   id: number;
@@ -23,6 +24,8 @@ export const CommentsSection = ({ postId }: CommentsSectionProps) => {
   const [loading, setLoading] = useState(false);
 
   const { isLoggedIn, userInfo, login } = useAuth();
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (!postId) return;
@@ -79,14 +82,14 @@ export const CommentsSection = ({ postId }: CommentsSectionProps) => {
 
   return (
     <section className={styles.commentsSection}>
-      <h2 className={styles.commentsTitle}>Comments</h2>
+      <h2 className={styles.commentsTitle}>{t("comments.title")}</h2>
 
       <div className={styles.commentForm}>
         <textarea
           value={commentText}
           onChange={(e) => setCommentText(e.target.value)}
           placeholder={
-            isLoggedIn ? "Write a comment..." : "Please log in to write a comment..."
+            isLoggedIn ? `${t("comments.write")}` : `${t("comments.please")}`
           }
           className={styles.commentInput}
           rows={4}
@@ -110,7 +113,7 @@ export const CommentsSection = ({ postId }: CommentsSectionProps) => {
               </div>
             ) : (
               <button onClick={login} className={styles.loginLink}>
-                Log in to publish as a member
+                {t("comments.request")}
               </button>
             )}
 
@@ -120,14 +123,14 @@ export const CommentsSection = ({ postId }: CommentsSectionProps) => {
                 className={styles.cancelButton}
                 disabled={!isLoggedIn}
               >
-                Cancel
+                {t("comments.cancel")}
               </button>
               <button
                 onClick={handleCommentSubmit}
                 className={styles.publishButton}
                 disabled={!commentText.trim() || !isLoggedIn}
               >
-                {isLoggedIn ? "Publish" : "Login to Publish"}
+                {isLoggedIn ? `${t("comments.publish")}` : `${t("comments.logtopublish")}`}
               </button>
             </div>
           </div>
@@ -136,10 +139,10 @@ export const CommentsSection = ({ postId }: CommentsSectionProps) => {
 
       {/* Comments list */}
       {loading ? (
-        <p>Loading comments...</p>
+        <p>{t("comments.loading")}</p>
       ) : comments.length === 0 ? (
         <div className={styles.noComments}>
-          <p>No comments yet. Be the first to share your thoughts!</p>
+          <p>{t("comments.nocomment")}</p>
         </div>
       ) : (
         <div className={styles.commentsList}>

@@ -60,12 +60,12 @@ export const RecentPostsSection = () => {
     return (
         <section className={styles.recentPostsSection}>
             <div className={styles.sectionHeader}>
-                <h2 className={styles.sectionTitle}>Recent Posts</h2>
+                <h2 className={styles.sectionTitle}>{t("recentPosts.title")}</h2>
                 <button 
                     className={styles.seeAllButton}
                     onClick={() => navigate("/blog")}
                 >
-                    See All
+                    {t("recentPosts.seeall")}
                 </button>
             </div>
 
