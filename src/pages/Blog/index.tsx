@@ -1,10 +1,10 @@
-// Blog.tsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from './index.module.css';
 import { useBlog } from '../../hooks/useBlog';
 import type { BlogPost } from '../../types/blog';
 import { Heart, MoreHorizontal, User } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import styles from './index.module.css';
 
 interface BlogCardProps {
   post: BlogPost;
@@ -18,7 +18,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, onLike, onPostClick }) => {
     // Kiểm tra xem có click vào button không
     const target = e.target as HTMLElement;
     if (target.closest('button')) {
-      return; // Không xử lý nếu click vào button
+      return;
     }
     onPostClick(post.id);
   };
@@ -29,7 +29,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, onLike, onPostClick }) => {
   };
 
   const handleMoreClick = (e: React.MouseEvent) => {
-    e.stopPropagation(); // Ngăn event bubbling
+    e.stopPropagation();
     // Xử lý logic cho more button ở đây
     console.log('More options for post:', post.id);
   };
@@ -38,7 +38,6 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, onLike, onPostClick }) => {
     <article 
       className={styles.blogCard}
       onClick={handleCardClick}
-      style={{ cursor: 'pointer' }} // Thêm cursor pointer
     >
       {/* Image */}
       <div className={styles.imageContainer}>
@@ -99,17 +98,26 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, onLike, onPostClick }) => {
 };
 
 const Blog: React.FC = () => {
-  const [activeFilter, setActiveFilter] = useState('Tất cả');
+  const [activeFilter, setActiveFilter] = useState('all');
+  const [page, setPage] = useState(1);
+
+  const { t } = useTranslation();
 
   // Lấy posts từ hook useBlog
-  const { posts, loading, error } = useBlog({
-    initialParams: { per_page: 6, orderby: 'date', order: 'desc' },
-    autoFetch: true
+  const { posts, loading, error, totalPages, fetchPosts } = useBlog({
+    initialParams: { per_page: 6, page: 1, orderby: "date", order: "desc" },
+    autoFetch: true,
   });
 
   const navigate = useNavigate();
 
-  const filters = ['Tất cả', 'Gần đây', 'Điểm tin', 'Góc học thuật', 'Chuyện bên lề'];
+  const filters = [
+    { key: "all", label: t("blog.filters.all") },
+    { key: "recent", label: t("blog.filters.recent") },
+    { key: "news", label: t("blog.filters.news") },
+    { key: "academic", label: t("blog.filters.academic") },
+    { key: "stories", label: t("blog.filters.stories") },
+  ];
 
   // Toggle like cho 1 post
   const handleLike = (postId: number) => {
@@ -119,6 +127,15 @@ const Blog: React.FC = () => {
   // Điều hướng khi click vào post
   const handlePostClick = (slug?: string) => {
     navigate(`/posts/${slug}`);
+  };
+
+  // Tải thêm post
+  const handleLoadMore = () => {
+    if (page < totalPages) {
+      const nextPage = page + 1;
+      setPage(nextPage);
+      fetchPosts({ per_page: 6, page: nextPage, orderby: "date", order: "desc" }, true);
+    }
   };
 
   return (
@@ -131,13 +148,13 @@ const Blog: React.FC = () => {
         <div className={styles.filterTabs}>
           {filters.map((filter) => (
             <button
-              key={filter}
-              onClick={() => setActiveFilter(filter)}
+              key={filter.key}
+              onClick={() => setActiveFilter(filter.key)}
               className={`${styles.filterTab} ${
-                activeFilter === filter ? styles.active : ''
+                activeFilter === filter.key ? styles.active : ""
               }`}
             >
-              {filter}
+              {filter.label}
             </button>
           ))}
         </div>
@@ -158,6 +175,19 @@ const Blog: React.FC = () => {
           />
         ))}
       </div>
+
+      {/* Load More Button */}
+      {page < totalPages && (
+        <div className={styles.loadMoreWrapper}>
+          <button
+            onClick={handleLoadMore}
+            disabled={loading}
+            className={styles.loadMoreBtn}
+          >
+            {loading ? "Loading..." : "Load More"}
+          </button>
+        </div>
+      )}
     </div>
   );
 };

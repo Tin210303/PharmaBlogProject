@@ -1,11 +1,10 @@
 {
     "brand": "Tin tức Dược",
-    "subtitle": "Từ giảng đường đến lâm sàng: Học và ứng dụng ngành Dược",
+    "subtitle": "Cùng nhau học hỏi, định hình tương lai",
     "nav": {
       "home": "Trang chủ",
       "blog": "Bài viết",
-      "about": "Giới thiệu",
-      "contact": "Liên hệ"
+      "about": "Giới thiệu"
     },
     "welcome": "Chào mừng bạn đến với website của tôi",
     "changeLanguage": "Đổi ngôn ngữ",
@@ -42,8 +41,8 @@
     "blogSection": {
       "title": "Suy ngẫm của tôi",
       "allPosts": "Tất cả bài viết",
-      "samplePostTitle": "Thải độc cơ thể từ bên trong",
-      "samplePostSubtitle": "Khám phá cách các giải pháp dựa trên dược phẩm có thể hỗ trợ chức năng gan, đào thải độc tố và phục hồi năng lượng một cách an toàn và hiệu quả. Những thay đổi nhỏ có thể tạo nên sự khác biệt lớn cho sức khỏe của bạn."
+      "samplePostTitle": "Những thông tin mới nhất và chuyên sâu trong lĩnh vực Dược học",
+      "samplePostSubtitle": "Một không gian học thuật uy tín, nơi sinh viên, dược sĩ và những người quan tâm có thể cập nhật kiến thức chuyên môn, tiếp cận các nghiên cứu mới, cũng như tìm thấy những chia sẻ thực tiễn hữu ích phục vụ cho học tập và công việc."
     },
   
     "recentPosts": {
@@ -62,7 +61,23 @@
       "greeting": "Xin chào, tôi là",
       "title": "Một blogger ngành Dược. Đam mê chia sẻ kiến thức, trải nghiệm và những hiểu biết về y tế và mọi thứ giúp nâng cao sức khỏe.",
       "description": "Tôi là một đoạn văn. Nhấp để thêm văn bản của bạn và chỉnh sửa. Bạn có thể kéo thả nó ở bất cứ đâu trên trang. Đây là nơi tuyệt vời để bạn kể câu chuyện của mình và giúp người dùng hiểu thêm về bạn.",
-      "readMore": "Xem thêm"
+      "readMore": "Xem thêm",
+      "content": {
+        "greeting": "Xin chào mọi người",
+        "paragraph1": "Chào mừng bạn đến với Pharma News – nơi cập nhật những điểm tin mới nhất về ngành Dược.",
+        "paragraph2": "Pharma News được thành lập với sứ mệnh tạo ra một không gian học thuật đáng tin cậy, nơi bạn đọc có thể tìm thấy những kiến thức chuyên sâu về Dược lý và Dược lâm sàng. Bên cạnh đó, chúng tôi cũng mang đến những câu chuyện thú vị và chia sẻ hữu ích, góp phần giúp bạn đọc có thêm góc nhìn về cuộc sống và công việc trong ngành.",
+        "paragraph3": "Pharma News kỳ vọng sẽ trở thành một kênh thông tin học thuật uy tín, đồng hành cùng bạn đọc trên con đường học tập và làm việc."
+      }
+    },
+
+    "blog": {
+      "filters": {
+        "all": "Tất cả",
+        "recent": "Gần đây",
+        "news": "Điểm tin",
+        "academic": "Góc học thuật",
+        "stories": "Chuyện bên lề"
+      }
     }
   }
   

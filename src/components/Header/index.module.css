@@ -16,6 +16,11 @@
 }
 
 /* Brand section */
+.logo {
+    height: 63px;
+    object-fit: cover;
+}
+
 .brand {
     display: flex;
     flex-direction: column;

@@ -208,21 +208,29 @@
     color: #ef4444;
 }
 
-.loadMoreContainer {
-    display: flex;
-    justify-content: center;
-    margin-top: 3rem;
+.loadMoreWrapper {
+    text-align: center;
+    margin-bottom: 3rem;
 }
 
-.loadMoreButton {
-    padding: 0.75rem 2rem;
-    border: 1px solid #d1d5db;
-    color: #374151;
-    background-color: transparent;
-    border-radius: 0.5rem;
+.loadMoreBtn {
+    background-color: var(--default-color);
+    color: white;
     font-weight: 500;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
+    transition: 0.2s;
+}
+
+.loadMoreBtn:hover {
+   opacity: 0.8;
+}
+
+.loadMoreBtn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
 }
 
 .loadMoreButton:hover {

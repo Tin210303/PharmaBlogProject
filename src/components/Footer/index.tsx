@@ -97,11 +97,11 @@ const Footer: React.FC = () => {
       <div className={styles.container}>
         {/* Left Column - Company Info */}
         <div className={styles.companyInfo}>
-          <h2 className={styles.title}>Inner Pieces</h2>
+          <h2 className={styles.title}>Pharma News</h2>
           
           <div className={styles.contactInfo}>
             <p>123-456-7890</p>
-            <p>info@mysite.com</p>
+            <p>pharmanews.clinpharm@gmail.com</p>
           </div>
 
           <div className={styles.socialLinks}>
@@ -109,24 +109,24 @@ const Footer: React.FC = () => {
               className={styles.socialLink}
               aria-label="Facebook"
             >
-              <Facebook size={20} />
+              <a target='_blank' href='https://www.facebook.com/profile.php?id=100063672543408'><Facebook size={20} /></a>
             </div>
             <div 
               className={styles.socialLink}
               aria-label="Twitter"
             >
-              <Twitter size={20} />
+              <a target='_blank' href='#'><Twitter size={20} /></a>
             </div>
             <div 
               className={styles.socialLink}
               aria-label="Instagram"
             >
-              <Instagram size={20} />
+              <a target='_blank' href='#'><Instagram size={20} /></a>
             </div>
           </div>
 
           <div className={styles.copyright}>
-            <p>© 2035 by Inner Pieces.</p>
+            <p>© 2025 by Pharma News.</p>
             <p>Powered and secured by <span className={styles.wixLink}>Wix</span></p>
           </div>
         </div>

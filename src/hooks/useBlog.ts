@@ -31,13 +31,13 @@ export const useBlog = (options: UseBlogOptions = {}) => {
   const isMountedRef = useRef(true);
   const lastParamsRef = useRef<string>('');
 
-  const fetchPosts = useCallback(async (params: BlogApiParams = {}) => {
+  const fetchPosts = useCallback(async (params: BlogApiParams = {}, append = false) => {
     if (!isMountedRef.current) return;
 
     const currentParams = JSON.stringify({ ...initialParams, ...params });
     
     // Tránh fetch trùng lặp
-    if (currentParams === lastParamsRef.current && state.posts.length > 0) {
+    if (!append && currentParams === lastParamsRef.current && state.posts.length > 0) {
       return;
     }
     
@@ -52,7 +52,7 @@ export const useBlog = (options: UseBlogOptions = {}) => {
       
       setState(prev => ({
         ...prev,
-        posts: response.posts,
+        posts: append ? [...prev.posts, ...response.posts] : response.posts,
         total: response.total,
         totalPages: response.totalPages,
         loading: false
@@ -67,7 +67,7 @@ export const useBlog = (options: UseBlogOptions = {}) => {
         loading: false
       }));
     }
-  }, [initialParams]);
+  }, [initialParams, state.posts.length]);
 
   const searchPosts = useCallback(async (query: string, page = 1, perPage = 10) => {
     if (!isMountedRef.current) return;

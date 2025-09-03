@@ -1,7 +1,8 @@
 // AboutSection.tsx
 import React, { useEffect, useRef, useState } from 'react';
-import styles from './index.module.css';
 import { useTranslation } from 'react-i18next';
+import logo from '../../../assets/imgs/logo.jpg';
+import styles from './index.module.css';
 
 interface AboutSectionProps {
   className?: string;
@@ -18,7 +19,7 @@ interface AboutSectionProps {
 const AboutSection: React.FC<AboutSectionProps> = ({ 
   className,
   name = "Dena",
-  image = 'https://static.wixstatic.com/media/f5af78_6af31cb479544a4cb2d3897da7841094~mv2_d_6720_4480_s_4_2.jpg/v1/crop/x_2553,y_0,w_3425,h_4480/fill/w_420,h_548,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/about_HP_image.jpg',
+  image = logo,
   imageAlt = 'Portrait of Dena in purple jacket',
   buttonText = "Read More",
   onButtonClick

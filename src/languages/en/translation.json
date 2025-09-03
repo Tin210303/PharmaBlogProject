@@ -1,11 +1,10 @@
 {
     "brand": "Pharma News",
-    "subtitle": "From Classroom to Clinic: Learning and Applying Pharmacy",
+    "subtitle": "Learning together, shaping the future",
     "nav": {
       "home": "Home",
       "blog": "Blog",
-      "about": "About",
-      "contact": "Contact"
+      "about": "About"
     },
     "welcome": "Welcome to my website",
     "changeLanguage": "Change language",
@@ -42,8 +41,8 @@
     "blogSection": {
       "title": "My Thoughts",
       "allPosts": "All Posts",
-      "samplePostTitle": "Detox your body from the inside out",
-      "samplePostSubtitle": "Discover how pharmacy-based solutions can support liver function, flush out toxins, and restore your energy safely and effectively. Small changes can make a big difference to your health."
+      "samplePostTitle": "The latest and most in-depth information in the field of Pharmacy",
+      "samplePostSubtitle": "A trusted academic space where students, pharmacists, and enthusiasts can update their professional knowledge, access new research, and find practical insights to support both learning and professional practice."
     },
   
     "recentPosts": {
@@ -62,11 +61,23 @@
       "greeting": "Hi, I'm",
       "title": "A pharmacy blogger. Passionate about sharing knowledge, experiences, and insights on healthcare and everything that helps improve well-being.",
       "description": "I'm a paragraph. Click here to add your own text and edit me. It's easy. Just click \"Edit Text\" or double click me to add your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I'm a great place for you to tell a story and let your users know a little more about you.",
-      "readMore": "Read More"
+      "readMore": "Read More",
+      "content": {
+        "greeting": "Hello everyone",
+        "paragraph1": "Welcome to Pharma News – your source for the latest updates in the pharmaceutical field.",
+        "paragraph2": "Pharma News was founded with the mission of creating a reliable academic space where readers can find in-depth knowledge of pharmacology and clinical pharmacy. In addition, we also bring engaging stories and practical insights to help readers gain a broader perspective on life and work in the profession.",
+        "paragraph3": "Pharma News aspires to become a trusted academic channel, accompanying readers on their journey of learning and professional development."
+      }
     },
 
     "blog": {
-
+      "filters": {
+        "all": "All",
+        "recent": "Recent",
+        "news": "News",
+        "academic": "Academic Corner",
+        "stories": "Side Stories"
+      }
     }
   }
   
