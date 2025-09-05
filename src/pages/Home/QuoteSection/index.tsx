@@ -18,11 +18,6 @@ interface QuoteSectionProps {
 
 const QuoteSection: React.FC<QuoteSectionProps> = ({ 
   className,
-  quote = {
-    text: "I always get to where I'm going by walking away from where I have been.",
-    author: "Winnie the Pooh",
-    source: "A.A. Milne"
-  },
   image = 'https://static.wixstatic.com/media/f5af78_81b23a68d5ac4cb699ddd6f7fbd93035~mv2_d_3000_2246_s_2.jpg/v1/fill/w_440,h_440,fp_0.50_0.50,q_90,enc_avif,quality_auto/f5af78_81b23a68d5ac4cb699ddd6f7fbd93035~mv2_d_3000_2246_s_2.webp',
   imageAlt = 'Hand reaching towards light'
 }) => {
@@ -75,10 +70,8 @@ const QuoteSection: React.FC<QuoteSectionProps> = ({
           </div>
           
           <div className={styles.attribution}>
-            <span className={styles.author}>— {quote.author}</span>
-            {quote.source && (
-              <span className={styles.source}>, {quote.source}</span>
-            )}
+            <span className={styles.author}>— {t("quote.author")}</span>
+            <span className={styles.source}>, {t("quote.source")}</span>
           </div>
         </div>
 

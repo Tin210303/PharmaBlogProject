@@ -18,15 +18,30 @@ interface AboutSectionProps {
 
 const AboutSection: React.FC<AboutSectionProps> = ({ 
   className,
-  name = "Dena",
   image = logo,
   imageAlt = 'Portrait of Dena in purple jacket',
   buttonText = "Read More",
   onButtonClick
 }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
   const [isVisible, setIsVisible] = useState(false);
+
   const sectionRef = useRef<HTMLElement>(null);
+
+  const [greeting, setGreeting] = useState("");
+
+  useEffect(() => {
+    // Determine greeting based on current hour
+    const hour = new Date().getHours();
+    if (hour < 12) {
+      setGreeting(`${t("about.greeting.morning")}`);
+    } else if (hour < 18) {
+      setGreeting(`${t("about.greeting.afternoon")}`);
+    } else {
+      setGreeting(`${t("about.greeting.evening")}`);
+    }
+  }, [i18n.language]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -82,7 +97,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({
         {/* Right side - Content */}
         <div className={styles.contentSection}>
           <div className={styles.content}>
-            <h2 className={styles.greeting}>{t("about.greeting")} {name}</h2>
+            <h2 className={styles.greeting}>{greeting}</h2>
             
             <p className={styles.titleText}>{t("about.title")}</p>
             

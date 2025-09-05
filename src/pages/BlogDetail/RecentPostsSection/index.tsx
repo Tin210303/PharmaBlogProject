@@ -14,7 +14,7 @@ export const RecentPostsSection = () => {
     });
     
     const [visiblePosts, setVisiblePosts] = useState<Set<number>>(new Set());
-    
+
     const postRefs = useRef<Map<number, HTMLElement>>(new Map());
     
     useEffect(() => {
@@ -39,13 +39,13 @@ export const RecentPostsSection = () => {
         );
     
         postRefs.current.forEach((ref) => {
-        if (ref) observer.observe(ref);
+            if (ref) observer.observe(ref);
         });
     
         return () => {
-        postRefs.current.forEach((ref) => {
-            if (ref) observer.unobserve(ref);
-        });
+            postRefs.current.forEach((ref) => {
+                if (ref) observer.unobserve(ref);
+            });
         };
     }, [posts]);
     
